@@ -1,0 +1,20 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+
+def main():
+    fileName = 'student_performance_ml.csv'
+    df = pd.read_csv(fileName)
+
+    X = df.drop('FinalResult',axis=1)
+    Y = df['FinalResult']
+
+    X_Train,X_Test,Y_Train,Y_Test = train_test_split(X,Y,test_size=0.2)
+
+    model = DecisionTreeClassifier()
+
+    model.fit(X_Train,Y_Train)
+
+if __name__ == "__main__":
+    main()
